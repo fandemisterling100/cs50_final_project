@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+    
+{% block main %}
+<div class="barra"><h1 class="titles">My movies</h1></div>
+<div class="space"></div>
+<div class="container">
+    {% set cont = 0 %}
+    {% for movie in movies_info %}
+
+    {% set cont = cont + 1 %}
+    <div class="row">
+      <div class="col-md-auto">
+        <img class ="cover" src="{{ movie['url_image'] }}" alt="Movie Cover">
+      </div>
+      <div class="col">
+        <table>
+            <tr class="fila">
+                <td id = "{{ 'id_' + cont|string }}" ><span class="names">ID:</span> {{ movie['movie_id'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{ 'title_' + cont|string }}" ><span class="names">Titulo:</span> {{ movie['title'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{ 'year_' + cont|string }}" ><span class="names">Año:</span> {{ movie['year'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{ 'kind_' + cont|string }}" ><span class="names">kind:</span> {{ movie['kind'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{ 'genre_' + cont|string }}" ><span class="names">Géneros:</span> {{ movie['genres'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{ 'rating_' + cont|string }}" ><span class="names">Rating:</span> {{ movie["rating"] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{ 'director_' + cont|string }}" ><span class="names">Directors:</span> {{ movie['directors'] }}</td>
+            </tr>
+        </table>
+      </div>
+    </div>
+    <div class="space"></div>
+    {% endfor %}
+</div>
+{% endblock %}

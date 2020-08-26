@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+    
+{% block main %}
+<div class="barra"><h1 class="titles">Recommendations</h1></div>
+<div class="space"></div>
+<div class="container">
+    {% set cont = 0 %}
+    {% for movie in movies_info %}
+
+    {% set cont = cont + 1 %}
+    <div class="row">
+      <div class="col-md-auto">
+        <img class ="cover" src="{{ movie['cover'] }}" alt="Movie Cover">
+      </div>
+      <div class="col">
+        <table>
+            <tr class="fila">
+                <td id = "{{ 'id_' + cont|string }}" >ID: {{ movie['id'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{ 'title_' + cont|string }}" >Titulo: {{ movie['title'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{ 'year_' + cont|string }}" >Año: {{ movie['year'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{ 'kind_' + cont|string }}" >kind: {{ movie['kind'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{ 'genre_' + cont|string }}" >Géneros: {{ movie['genres'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{ 'rating_' + cont|string }}" >Rating: {{ movie["rating"] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{ 'director_' + cont|string }}" >Directors: {{ movie['directors'] }}</td>
+            </tr>
+        </table>
+      </div>
+      <div class="col col-lg-2">
+        <form action="/recommendations" method="POST">
+          <button value = "{{ 'but_' + cont|string, movie['id'],  movie['title'], movie['year'], movie['kind'], movie['genres'], movie['rating'], movie['directors'],  movie['cover']}}" class="btn btn-primary" type="submit" name="submit_button">I've seen it</button>
+        </form>
+    </div>
+    </div>
+    <div class="space"></div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <form action="/change_pass" method="POST">
+        <input type="text" name="password" placeholder="Current Password">
+        <input type="text" name="new_pass" placeholder="New Password">
+        <input type="text" name="confirm_pass" placeholder="Confirmation of password">
+        <input type="submit" name="submit">
+    </form>
+{% endblock %}

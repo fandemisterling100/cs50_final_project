@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div class="barra"><h1 class="titles">Search Movie</h1></div>
+<form action="/search_movie" method="POST">
+    <input type="text" name="user_in" placeholder="Movie or tv show">
+    <input type="submit" name="submit">
+</form>
+{% endblock %}

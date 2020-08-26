@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div class="barra"><h1 class="titles">Search Results</h1></div>
+<div class="space"></div>
+<div class="container">
+    {% set cont = 0 %}
+    {% for movie in movies_info %}
+
+    {% set cont = cont + 1 %}
+    <div class="row">
+      <div class="col-md-auto">
+        <img class ="cover" src="{{ movies_info[movie]['cover'] }}" alt="Movie Cover">
+      </div>
+      <div class="col">
+        <table>
+            <tr class="fila">
+                <td id = "{{'id_'+cont|string}}" ><span class = "names">ID:</span> {{ movies_info[movie]['id'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{'title_'+cont|string}}" ><span class = "names">Titulo:</span> {{ movies_info[movie]['title'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{'year_'+cont|string}}" ><span class = "names">Año:</span> {{ movies_info[movie]['year'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{'kind_'+cont|string}}" ><span class = "names">kind:</span> {{ movies_info[movie]['kind'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{'genre_'+cont|string}}" ><span class = "names">Géneros:</span> {{ movies_info[movie]['genres'] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{'rating_'+cont|string}}" ><span class = "names">Rating:</span> {{ movies_info[movie]["rating"] }}</td>
+            </tr>
+            <tr class="fila">
+                <td id = "{{'director_'+cont|string}}" ><span class = "names">Directors:</span> {{ movies_info[movie]['directors'] }}</td>
+            </tr>
+        </table>
+      </div>
+      <div class="col col-lg-2">
+          <form action="/show_movies" method="POST">
+            <button value = "{{ 'but_' + cont|string, movies_info[movie]['id'],  movies_info[movie]['title'], movies_info[movie]['year'], movies_info[movie]['kind'], movies_info[movie]['genres'], movies_info[movie]['rating'], movies_info[movie]['directors'], movies_info[movie]['cover']}}" class="btn btn-primary" type="submit" name="submit_button">Add</button>
+          </form>
+      </div>
+    </div>
+    <div class="space"></div>
+    {% endfor %}
+</div>
+{% endblock %}
